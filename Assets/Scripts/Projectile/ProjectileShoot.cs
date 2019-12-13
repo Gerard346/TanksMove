@@ -6,6 +6,7 @@ public class ProjectileShoot : MonoBehaviour
 {
     // Start is called before the first frame update
     GameObject projectile;
+    public GameObject sphere;
     public float speed = 40.0f;
     void Start()
     {
@@ -15,13 +16,15 @@ public class ProjectileShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //sphere.transform.position = transform.position;
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject bullet = Instantiate(projectile) as GameObject;
-            projectile.transform.position = transform.position;
-
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+            
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.velocity = transform.forward * speed;
+
         }
+        
     }
 }
